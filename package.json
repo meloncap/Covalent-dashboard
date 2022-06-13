@@ -1,0 +1,50 @@
+{
+  "name": "tail-plates",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "dotenv": "^12.0.3",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^10.0.4",
+    "@octokit/rest": "^18.12.0",
+    "@types/jest": "^27.4.0",
+    "@visx/visx": "^2.10.1",
+    "autoprefixer": "^10.4.2",
+    "bignumber": "^1.1.0",
+    "bignumber.js": "^9.0.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "next": "latest",
+    "next-themes": "^0.0.15",
+    "octokit": "^1.7.1",
+    "postcss": "^8.4.6",
+    "postcss-import": "^13.0.0",
+    "query-string": "^7.1.1",
+    "react": "17.0.2",
+    "react-device-detect": "^1.15.0",
+    "react-dom": "17.0.2",
+    "react-google-recaptcha": "^2.1.0",
+    "react-use": "^17.3.2",
+    "tailwindcss": "^3.0.23"
+  }
+}

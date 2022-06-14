@@ -45,7 +45,7 @@ export const reqTransactions = (
   pageNumber: number = 0
 ) => {
   return sendRequest({
-    url: `${chainId}/address/${address}/transactions_v2/?key=${API_KEY}&format=JSON&&page-number=${pageNumber}`,
+    url: `${chainId}/address/${address}/transactions_v2/?key=${API_KEY}&format=JSON&page-number=${pageNumber}`,
   });
 };
 
@@ -55,8 +55,50 @@ export const reqNFTs = (chainId: string, contract: string) => {
   });
 };
 
-export const reqAllNFTs = (chainId: string) => {
+export const reqAllNFTs = (chainId: string, pageNumber: number = 0) => {
   return sendRequest({
-    url: `${chainId}/nft_market/?key=${API_KEY}&format=JSON`,
+    url: `${chainId}/nft_market/?key=${API_KEY}&format=JSON&page-number=${pageNumber}`,
+  });
+};
+
+export const reqDetailsNFT = (chainId: string, contract: string) => {
+  return sendRequest({
+    url: `pricing/historical_by_addresses_v2/${chainId}/USD/${contract}/?key=${API_KEY}&format=JSON`,
+  });
+};
+
+export const reqTestDetailsNFTs = (chainId: string, contract: string) => {
+  return sendRequest({
+    url: `${chainId}/nft_market/${contract}?key=${API_KEY}&format=JSON`,
+  });
+};
+
+export const reqNFTmetadata = (
+  chainId: string,
+  contract: string,
+  tokenId: string
+) => {
+  return sendRequest({
+    url: `${chainId}/tokens/${contract}/nft_metadata/${tokenId}/?key=${API_KEY}&format=JSON`,
+  });
+};
+
+export const reqNFTTransactions = (
+  chainId: string,
+  contract: string,
+  tokenId: string
+) => {
+  return sendRequest({
+    url: `${chainId}/tokens/${contract}/nft_transactions/${tokenId}/?key=${API_KEY}&format=JSON`,
+  });
+};
+
+export const reqNFTSales = (
+  chainId: string,
+  contract: string,
+  tokenId: string
+) => {
+  return sendRequest({
+    url: `${chainId}/nft_market/collection/${contract}/token_id/${tokenId}/sales/?key=${API_KEY}&format=JSON`,
   });
 };

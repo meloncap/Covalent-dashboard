@@ -71,7 +71,7 @@ export const IndexPage = () => {
 
   const holdings = calculateHoldings(folios);
   const diff = calculateDiffValue(holdings);
-  const percent = (diff * 100) / countTotalBalance(items);
+  const percent = (diff * 100) / holdings[holdings.length - 1]?.close;
 
   return (
     <AppLayout
@@ -102,7 +102,7 @@ export const IndexPage = () => {
                   <SimpleCard
                     isLoading={isLoadingFolio}
                     title={`$ ${formatNumber(diff)}`}
-                    subTitle="Delta (1 motnh)"
+                    subTitle="Delta (1 month)"
                     iconColor={diff < 0 ? "bg-red-300" : undefined}
                     icon={
                       diff < 0 ? (

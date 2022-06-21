@@ -132,7 +132,7 @@ export const IndexPageNFT = () => {
             </div>
           </div>
         )}
-        <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
+        <div className="grid grid-cols-3 gap-4 lg:grid-cols-5">
           {items?.length > 0 &&
             items.slice(0, offset).map(nft => {
               return (

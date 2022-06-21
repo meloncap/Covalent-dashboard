@@ -79,18 +79,18 @@ export default () => {
       desc="Dashboard / Get tokens balance of any address"
     >
       <div className="my-2">
-        <div className="flex items-start w-full gap-4 ">
+        <div className="flex flex-col items-start w-full gap-4 lg:flex-row ">
           <div ref={ref} className="flex items-center w-full gap-4">
             <div className="flex flex-col w-full gap-4">
-              <div className="flex items-center w-full gap-4">
-                <div className="w-1/3">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+                <div className="w-full">
                   <SimpleCard
                     isLoading={isLoadingBalance}
                     title={items.length}
                     subTitle="Total token(s)"
                   />
                 </div>
-                <div className="w-1/3">
+                <div className="w-full">
                   <SimpleCard
                     isLoading={isLoadingBalance}
                     title={`$ ${formatNumber(countTotalBalance(items))}`}
@@ -98,7 +98,7 @@ export default () => {
                     icon={<img src="/images/money.svg" />}
                   />
                 </div>
-                <div className="w-1/3">
+                <div className="w-full">
                   <SimpleCard
                     isLoading={isLoadingFolio}
                     title={`$ ${formatNumber(diff)}`}
@@ -118,7 +118,7 @@ export default () => {
                   />
                 </div>
               </div>
-              <div className="bg-white rounded-xl">
+              <div className="overflow-x-auto bg-white rounded-xl">
                 <div className="flex items-center w-full gap-4 p-4 border-b border-b-gray-200">
                   <img src="/images/folio.svg" />
                   <p className="text-lg text-gray-500">Portfolio</p>
@@ -136,7 +136,7 @@ export default () => {
                             index === headers.length - 1
                               ? "rounded-tr-xl xl"
                               : ""
-                          } px-6 py-4 text-left font-normal text-gray-700  bg-white text-md`}
+                          } px-6 py-4 text-left font-normal text-gray-700  bg-white text-xs lg:text-md`}
                         >
                           {hd.name}
                         </th>

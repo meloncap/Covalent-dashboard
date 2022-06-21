@@ -84,8 +84,8 @@ export const IndexPage = () => {
       desc="Dashboard / Get tokens balance of any address"
     >
       <div className="my-2">
-        <div className="flex w-full gap-12">
-          <div className="flex flex-col w-3/4">
+        <div className="flex flex-wrap w-full">
+          <div className="flex flex-col w-full lg:w-3/4 lg:pr-4">
             <div className="flex items-center justify-between w-full">
               <h1 className="my-6 text-3xl font-bold text-gray-800">
                 Trending collections
@@ -97,7 +97,7 @@ export const IndexPage = () => {
                 </a>
               </Link>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               {isLoading
                 ? [1, 2, 3, 4].map((_, index) => {
                     return <NFTHero key={index} isLoading={isLoading} />;
@@ -115,7 +115,7 @@ export const IndexPage = () => {
                     })}
             </div>
           </div>
-          <div className="w-1/4">
+          <div className="w-full lg:w-1/4">
             <div className="flex items-center justify-between w-full">
               <h2 className="my-6 text-xl font-bold text-gray-800">
                 Top Floor
@@ -141,13 +141,13 @@ export const IndexPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full overflow-x-auto">
           <div className="flex items-center justify-between w-full">
             <h1 className="my-6 text-3xl font-bold text-gray-800">
               All collections
             </h1>
           </div>
-          <table className="min-w-full mt-4 overflow-x-auto leading-normal rounded-xl">
+          <table className="min-w-full mt-4 leading-normal rounded-xl">
             <thead>
               <tr className="rounded-xl">
                 {headers.map((hd, index) => (

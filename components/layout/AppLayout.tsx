@@ -23,7 +23,9 @@ const AppLayout = ({ title, desc, children }: Props) => {
           </div>
           <div className="flex flex-col w-full p-4">
             <AppHeader />
-            <div className="h-screen p-2 pb-24 overflow-auto">{children}</div>
+            <div className="h-screen pb-24 overflow-x-hidden lg:pt-2 lg:px-2 lg:pb-24">
+              {children}
+            </div>
           </div>
         </div>
       </main>

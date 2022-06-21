@@ -52,7 +52,7 @@ export const Select = ({
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
-          className="relative w-full px-2 py-2 text-left bg-gray-100 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="relative w-full px-2 py-2 text-xs text-left bg-gray-100 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           {selectedIem ? (
             <div className="flex items-center justify-between">

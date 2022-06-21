@@ -113,8 +113,8 @@ export const IndexPage = () => {
       <div className="my-2">
         <div className="flex flex-col w-full gap-4">
           <div className="flex flex-col w-full gap-4">
-            <div className="flex items-center w-4/5 gap-4">
-              <div className="w-1/4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              <div className="w-full">
                 <SimpleCard
                   isLoading={isLoading}
                   title={items.length}
@@ -122,7 +122,7 @@ export const IndexPage = () => {
                   icon={<img src="/images/transaction.svg" />}
                 />
               </div>
-              <div className="w-1/4">
+              <div className="w-full">
                 <SimpleCard
                   isLoading={isLoading}
                   title={countTotalFees(items)}
@@ -132,7 +132,7 @@ export const IndexPage = () => {
                   icon={<img src="/images/fees.svg" />}
                 />
               </div>
-              <div className="w-1/4">
+              <div className="w-full">
                 <SimpleCard
                   isLoading={isLoading}
                   title={totalIn}
@@ -142,7 +142,7 @@ export const IndexPage = () => {
                   icon={<img src="/images/in.svg" />}
                 />
               </div>
-              <div className="w-1/4">
+              <div className="w-full">
                 <SimpleCard
                   isLoading={isLoading}
                   title={totalOut}
@@ -154,7 +154,7 @@ export const IndexPage = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl">
+          <div className="overflow-x-auto bg-white rounded-xl">
             <div className="flex items-center w-full gap-4 p-4 border-b-2 border-gray-200">
               <img src="/images/transaction.svg" />
               <p className="text-lg text-gray-500">Transactions</p>
@@ -168,7 +168,7 @@ export const IndexPage = () => {
                       scope="col"
                       className={`${index === 0 ? "rounded-tl-xl xl" : ""} ${
                         index === headers.length - 1 ? "rounded-tr-xl xl" : ""
-                      } px-6 py-4 text-left font-normal text-gray-700  bg-white text-md`}
+                      } px-6 py-4 text-left font-normal text-gray-700  bg-white text-xs lg:text-md`}
                     >
                       {hd.name}
                     </th>

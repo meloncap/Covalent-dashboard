@@ -97,7 +97,19 @@ export default function PackToken({
     <div>
       <div>
         <svg width={width} height={height} ref={containerRef}>
-          <rect width={width} height={height} rx={14} fill={background} />
+          <rect width={width} height={height} rx={14} fill={background}></rect>
+          {items.length === 1 && (
+            <text
+              x={width / 2}
+              y={height / 2}
+              transform={`translate(-${width / 15},-${height / 40})`}
+              style={{ stroke: "white", fill: "white" }}
+              font-size="35"
+              color="white"
+            >
+              No data
+            </text>
+          )}
           <Treemap<typeof data>
             top={margin.top}
             root={root}

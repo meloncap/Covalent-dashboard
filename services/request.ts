@@ -49,10 +49,7 @@ const fetchData = (url, opts = {}) => {
     .then(parseJSON)
     .then(checkResponse)
     .catch(error => {
-      if (error.name === "TypeError") {
-        console.log(error);
-      }
-      throw error;
+      console.log(error);
     });
 };
 

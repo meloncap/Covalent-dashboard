@@ -4,12 +4,15 @@ import { NFTCollection } from "../../../pages/nft/index";
 
 interface Props {
   isLoading?: boolean;
-  collection: NFTCollection;
+  collection?: NFTCollection;
 }
 export const NFTHorizontal = ({ isLoading, collection }: Props) => {
   if (isLoading || !collection) {
     return (
-      <div className="relative w-full px-4 py-6 bg-gray-200 shadow animate-pulse rounded-xl h-44 dark:bg-gray-700"></div>
+      <div
+        style={{ height: "100px" }}
+        className="relative w-full px-4 py-6 bg-gray-200 shadow animate-pulse rounded-xl dark:bg-gray-700"
+      ></div>
     );
   }
 

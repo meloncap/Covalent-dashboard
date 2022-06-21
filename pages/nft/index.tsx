@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../../AppContext";
 import AppLayout from "../../components/layout/AppLayout";
@@ -39,7 +40,7 @@ export const IndexPage = () => {
   const { selectedChainId, address } = useContext(AppContext);
   const [items, setItems] = useState<NFTCollection[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const router = useRouter();
   const headers = [
     { name: "" },
     { name: "Collection Name" },
@@ -97,14 +98,21 @@ export const IndexPage = () => {
               </Link>
             </div>
             <div className="grid grid-cols-4 gap-4">
-              {trending
-                .slice(0, 4)
-                .filter(col => col.first_nft_image)
-                .map(collection => {
-                  return (
-                    <NFTHero collection={collection} isLoading={isLoading} />
-                  );
-                })}
+              {isLoading
+                ? [1, 2, 3, 4].map((_, index) => {
+                    return <NFTHero key={index} isLoading={isLoading} />;
+                  })
+                : trending
+                    .slice(0, 4)
+                    .filter(col => col.first_nft_image)
+                    .map(collection => {
+                      return (
+                        <NFTHero
+                          collection={collection}
+                          isLoading={isLoading}
+                        />
+                      );
+                    })}
             </div>
           </div>
           <div className="w-1/4">
@@ -114,21 +122,25 @@ export const IndexPage = () => {
               </h2>
             </div>
             <div className="flex flex-col w-full gap-4">
-              {topFloor
-                .slice(0, 4)
-                .filter(col => col.first_nft_image)
-                .map(collection => {
-                  return (
-                    <NFTHorizontal
-                      collection={collection}
-                      isLoading={isLoading}
-                    />
-                  );
-                })}
+              {isLoading
+                ? [1, 2, 3, 4].map((_, index) => {
+                    return <NFTHorizontal key={index} isLoading={isLoading} />;
+                  })
+                : topFloor
+                    .slice(0, 4)
+                    .filter(col => col.first_nft_image)
+                    .map(collection => {
+                      return (
+                        <NFTHorizontal
+                          collection={collection}
+                          isLoading={isLoading}
+                        />
+                      );
+                    })}
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-xl"></div>
+
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-between w-full">
             <h1 className="my-6 text-3xl font-bold text-gray-800">
@@ -156,7 +168,10 @@ export const IndexPage = () => {
                 return (
                   <tr
                     key={item.collection_address || ""}
-                    className="bg-white border-b border-gray-200 rounded-xl"
+                    onClick={() => {
+                      router.push(`/nft/${item.collection_address}`);
+                    }}
+                    className="bg-white border-b border-gray-200 rounded-xl hover:bg-gray-100 hover:cursor-pointer"
                   >
                     <td className="px-5 py-5 text-sm bg-white ">
                       <img

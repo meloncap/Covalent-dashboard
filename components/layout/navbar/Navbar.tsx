@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const sections = [
@@ -21,7 +22,7 @@ export const Navbar = () => {
             </svg>
           ),
           label: "Balance checker",
-          link: "/address-balance",
+          link: "/",
         },
         {
           icon: (
@@ -67,6 +68,18 @@ export const Navbar = () => {
       ],
     },
   ];
+
+  const router = useRouter();
+
+  const isMatch = (path: string) => {
+    if (path === "/") {
+      return router.asPath === path;
+    }
+    return (
+      router.asPath.includes(path) &&
+      (router.asPath.length === path.length || router.asPath !== "/")
+    );
+  };
 
   return (
     <nav className="h-screen px-6 bg-white w-72 rounded-2xl dark:bg-gray-700">
@@ -117,14 +130,26 @@ export const Navbar = () => {
             {section.links.map(link => {
               return (
                 <Link
-                  className="flex items-center justify-start font-thin text-gray-500"
+                  className="relative flex items-center justify-start font-thin text-gray-500"
                   href={link.link}
                 >
-                  <a className="flex items-center p-2 my-4 transition-colors duration-200 cursor-pointer hover:text-gray-800 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
+                  <a
+                    className={`${
+                      isMatch(link.link)
+                        ? "bg-indigo-100 text-indigo-700 "
+                        : "hover:text-gray-800 dark:text-gray-400 hover:bg-gray-100"
+                    } flex items-center p-3 my-4 rounded-xl transition-colors duration-200 cursor-pointer  dark:hover:text-white dark:hover:bg-gray-600`}
+                  >
                     <span className="text-left">{link.icon}</span>
-                    <span className="mx-4 font-normal text-md">
+                    <span className="mx-4 text-lg font-normal">
                       {link.label}
                     </span>
+                    {isMatch(link.link) && (
+                      <img
+                        src="/images/selected.svg"
+                        className="absolute right-0"
+                      />
+                    )}
                   </a>
                 </Link>
               );

@@ -7,13 +7,16 @@ import { formatNumber } from "../../../utils";
 
 interface Props {
   isLoading?: boolean;
-  collection: NFTCollection;
+  collection?: NFTCollection;
 }
 
 export const NFTHero = ({ isLoading, collection }: Props) => {
   if (isLoading || !collection) {
     return (
-      <div className="relative w-full px-4 py-6 bg-gray-200 shadow animate-pulse rounded-xl h-88 dark:bg-gray-700"></div>
+      <div
+        style={{ height: "300px" }}
+        className="relative w-full px-4 py-6 bg-gray-200 shadow animate-pulse rounded-xl dark:bg-gray-700"
+      ></div>
     );
   }
 

@@ -10,7 +10,7 @@ interface Props {
 const Meta = ({ pageTitle, description }: Props) => {
   const router = useRouter();
 
-  const url = "https://www.conflux-pos-validators.com";
+  const url = "https://vermillion-madeleine-92b1ea.netlify.app/";
   const path = router.asPath;
 
   return (
@@ -43,7 +43,7 @@ const Meta = ({ pageTitle, description }: Props) => {
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff"></meta>
 
-      <meta name="image" property="og:image" content={`${url}/banner.png`} />
+      <meta name="image" property="og:image" content={`${url}/folio.png`} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta property="og:title" content={`${pageTitle}`} />
@@ -53,18 +53,18 @@ const Meta = ({ pageTitle, description }: Props) => {
       <meta name="twitter:creator" content="@nickbilton" />
       <meta
         property="og:image"
-        content="https://www.conflux-pos-validators.com/banner.png"
+        content="https://vermillion-madeleine-92b1ea.netlify.app/folio.png"
       />
-      <meta name="twitter:site" content="@ConfluxPoSPools" />
-      <meta name="twitter:creator" content="@ConfluxPoSPools" />
-      <meta name="twitter:title" content="Conflux PoS validators" />
+      <meta name="twitter:site" content="@Charlie85270" />
+      <meta name="twitter:creator" content="@Charlie85270" />
+      <meta name="twitter:title" content="Covalent crypto Dashboard" />
       <meta
         name="twitter:description"
-        content="Find the best Pool / Validator to stake your CFX token on Conflux Network."
+        content="Covalent oard / Dashboard built with covalent API."
       />
       <meta
         name="twitter:image"
-        content="https://www.conflux-pos-validators.com/banner.png"
+        content="https://vermillion-madeleine-92b1ea.netlify.app/folio.png"
       />
     </Head>
   );

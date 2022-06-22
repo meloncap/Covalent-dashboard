@@ -75,8 +75,8 @@ export default () => {
 
   return (
     <AppLayout
-      title="Dashboard / Get tokens balance of any address"
-      desc="Dashboard / Get tokens balance of any address"
+      title="Crypto Dashboard"
+      desc="Crypto Dashboard / Get live informations from covalent APIs"
     >
       <div className="my-2">
         <div className="flex flex-col items-start w-full gap-4 lg:flex-row ">

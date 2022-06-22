@@ -90,13 +90,13 @@ export const IndexPage = () => {
     do {
       result = await reqTransactions(selectedChainId, address, pageNumber);
       data = data.concat(result?.data?.items || []);
-      if (!result?.data.pagination.has_more) {
+      if (!result?.data?.pagination?.has_more) {
         setItems(data);
         setIsLoading(false);
       } else {
         pageNumber = pageNumber + 1;
       }
-    } while (result?.data.pagination.has_more);
+    } while (result?.data?.pagination?.has_more);
   };
 
   const getValue = (tx: Transaction) => {

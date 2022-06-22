@@ -3,14 +3,11 @@ const checkStatus = response => {
 };
 
 const parseJSON = async function (response) {
-  console.log(response);
   const contentType =
     response?.headers.get("content-type") || "application/json";
   try {
     if (contentType.includes("application/json")) {
-      const data = await response?.json();
-
-      return { data, response };
+      return { data: (await response?.json())?.data, response };
     } else if (contentType.includes("text/html")) {
       return { data: await response.text(), response };
     } else {

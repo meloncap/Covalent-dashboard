@@ -1,20 +1,16 @@
 const checkStatus = response => {
-  if (
-    (response.status >= 200 && response.status < 300) ||
-    response.status === 600
-  ) {
-    return response;
-  } else {
-    console.log("error");
-  }
+  return response;
 };
 
 const parseJSON = async function (response) {
+  console.log(response);
   const contentType =
     response?.headers.get("content-type") || "application/json";
   try {
     if (contentType.includes("application/json")) {
-      return { data: await response.json(), response };
+      const data = await response?.json();
+
+      return { data, response };
     } else if (contentType.includes("text/html")) {
       return { data: await response.text(), response };
     } else {
@@ -27,13 +23,14 @@ const parseJSON = async function (response) {
 
     (error as any).response = response;
     console.log(error);
+    throw error;
   }
 };
 
 const checkResponse = obj => {
-  if (obj?.response.status === 200) {
+  if (obj?.response?.status === 200) {
     return obj?.data || null;
-  } else if (obj?.response.status === 600) {
+  } else if (obj?.response?.status === 600) {
     const code = Number(obj.data?.code);
     const error: Partial<ErrorEvent> & {
       response?: ResponseType;
@@ -47,9 +44,10 @@ const fetchData = (url, opts = {}) => {
   return fetch(url, opts)
     .then(checkStatus)
     .then(parseJSON)
-    .then(checkResponse)
+
     .catch(error => {
       console.log(error);
+      throw error;
     });
 };
 

@@ -49,6 +49,30 @@ export const reqTransactions = (
   });
 };
 
+export const reqApprovals = (
+  chainId: string,
+  sender: string,
+  startingBlock: number,
+  endindBlock: number,
+  pageNumber: number = 0
+) => {
+  return sendRequest({
+    url: `${chainId}/events/topics/0x804c9b842b2748a22bb64b345453a3de7ca54a6ca45ce00d415894979e22897a/?key=${API_KEY}&format=JSON&page-number=${pageNumber}&starting-block=${startingBlock}&ending-block=${endindBlock}&sender-address=${sender}`,
+  });
+};
+
+export const reqEvents = (
+  chainId: string,
+  address: string,
+  startingBlock: number,
+  endindBlock: number,
+  pageNumber: number = 0
+) => {
+  return sendRequest({
+    url: `${chainId}/events/address/${address}/?key=${API_KEY}&format=JSON&page-number=${pageNumber}&starting-block=${startingBlock}&ending-block=${endindBlock}`,
+  });
+};
+
 export const reqNFTs = (chainId: string, contract: string) => {
   return sendRequest({
     url: `${chainId}/tokens/${contract}/nft_token_ids/?key=${API_KEY}&format=JSON`,

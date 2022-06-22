@@ -45,7 +45,6 @@ const colors = {
 
 export const IndexPage = () => {
   const router = useRouter();
-  console.log(router);
   const { selectedChainId } = useContext(AppContext);
   const [items, setItems] = useState<Event[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -218,13 +217,16 @@ export const IndexPage = () => {
       desc="Dashboard / Get tokens balance of any address"
     >
       <div className="my-2">
-        <form className="flex w-full gap-4" onSubmit={e => onSubmit(e)}>
+        <form
+          className="flex flex-wrap w-full gap-4"
+          onSubmit={e => onSubmit(e)}
+        >
           <input
             value={contractAddress}
             onChange={e => setContractAddress(e.target.value)}
             type="text"
             id="rounded-email"
-            className="flex-1 w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
+            className="flex-1 w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none lg:w-1/5 dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
             placeholder="Enter a contract address"
           />
           <input
@@ -232,7 +234,7 @@ export const IndexPage = () => {
             onChange={e => setStartingBlock(parseInt(e.target.value))}
             type="number"
             id="rounded-email"
-            className="flex-1 w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
+            className="w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none lg:w-1/5 dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
             placeholder="Starting block"
           />
           <input
@@ -240,7 +242,7 @@ export const IndexPage = () => {
             onChange={e => setEndingBlock(parseInt(e.target.value))}
             type="number"
             id="rounded-email"
-            className="flex-1 w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
+            className="w-full px-6 py-3 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent shadow appearance-none lg:w-1/5 dark:text-white dark:bg-gray-700 rounded-xl border-b-gray-200"
             placeholder="Ending block"
           />
           <Select

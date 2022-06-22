@@ -104,7 +104,7 @@ export default function PackToken({
               y={height / 2}
               transform={`translate(-${width / 15},-${height / 40})`}
               style={{ stroke: "white", fill: "white" }}
-              font-size="35"
+              fontSize="35"
               color="white"
             >
               No data

@@ -13,6 +13,16 @@ The Covalent Unified API is the fastest way to get blockchain data for your GR14
 
 ## The App
 
+
+### Technical stack
+
+
+- ReactJS & NextJS (Static site generator)
+- Typescript
+- TailwindCSS
+
+
+### Features
 The dApp have 4 main features which are (on all 28th blockchain supported by covalent APIs) : 
 
 - Track and check all tokens of an address (Tokens list, Folio history, TreeMap)

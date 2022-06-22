@@ -96,9 +96,9 @@ const AppHeader = () => {
 
       <div className="relative z-20 flex flex-col justify-center h-full mx-auto lg:px-3 flex-center">
         <div className="relative flex items-center w-full pl-1 lg:max-w-68 sm:pr-2 sm:ml-0">
-          <div className="container relative left-0 z-50 flex justify-between w-full h-full lg:w-3/4">
+          <div className="container relative left-0 z-50 flex justify-between w-full h-full lg:w-4/5">
             <form
-              className="flex items-center w-3/4 gap-4 ml-4 lg:w-1/2"
+              className="flex items-center w-3/4 gap-4 ml-4 lg:w-3/4"
               noValidate
               onSubmit={e => onSubmit(e)}
             >

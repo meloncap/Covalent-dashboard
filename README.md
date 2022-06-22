@@ -51,6 +51,7 @@ The dApp have 4 main features which are (on all 28th blockchain supported by cov
 
 ### NFT market
 <img width="1792" alt="nft" src="https://user-images.githubusercontent.com/34569321/175108334-6b924871-5918-4163-8eae-7307425b436f.png">
+
 *Covalent APIs used*
 - GET /v1/{chainId}/tokens/{contract}/nft_token_ids/
 - GET /v1/{chainId}/nft_market/
@@ -62,6 +63,7 @@ The dApp have 4 main features which are (on all 28th blockchain supported by cov
 ### Events
 <img width="1792" alt="transaction" src="https://user-images.githubusercontent.com/34569321/175108647-ec485f22-759e-47b8-a8e9-0749e42f57e6.png">
 
+*Covalent APIs used*
 - GET /v1/{chainId}/events/topics/{topic}/
 - GET /v1/{chainId}/events/address/{address}/
 - GET /v1/chains/

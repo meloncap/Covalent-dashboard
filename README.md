@@ -1,24 +1,74 @@
-# Conflux Pos Validators list
+# Covalent dashboard APP 
 
-![banner](https://user-images.githubusercontent.com/34569321/165640430-18e91628-9aa1-42f2-9baf-582a0ea762e4.png)
+<img width="1791" alt="image" src="https://user-images.githubusercontent.com/34569321/175106028-c8d11198-2725-441b-b27d-0300555a1269.png">
 
 
-Conflux-pools is an application that lists the staking pools on the conflux network.
-Conflux is a layer-1 blockchain, you can find all information about conflux here :
-This application is not official and has not been created by the conflux team, but it has received a grant from them: https://forum.conflux.fun/t/conflux-pools-validators-list/13856/9
+I created this app for the 14th Hackthon of Gitcoin. Hackathon: Grants Round 14 Hackathon
+## GR14: Web3 Application General Purpose Bounty (Covalent)
+Challenge Description
+We at Covalent believe that access to organized blockchain data can unlock a billion possibilities and so we provide the best single unified API to bring full transparency and visibility to assets across all blockchain networks. With the Covalent API, there is no need to invest developer resources in writing SQL or other queries since granular, decoded, multi-chain data is immediately available for 30+ blockchain networks including Ethereum, BSC, Polygon, Fantom and Avalanche. Covalent is fast becoming the go-to data provider, with the Covalent API powering over 1,000 industry-leading projects such as Zerion, ChainGuardians, 0x and Reef.
 
-The code is open source and anyone can participate in improving it.
-The purpose of this application is to centralise all the information concerning the different staking pools for securing the Conflux network.
-Anyone can add their pool to the list, following the instructions below.
+The Covalent Unified API is the fastest way to get blockchain data for your GR14 Hackathon project!
 
-# Warning
 
-This application is not affiliated with the pools and is therefore not responsible for lost/blocked tokens. As a reminder, here is a warning about staking on pools: https://forum.conflux.fun/t/pos-mining-pool-risk-warning/13760.
-A check is made each time a pool is added to ensure that the information in the pool is correct, but we do not check the contracts.
-Alerts are displayed on the application for pools whose contract has not been verified on conflux scan.
-As a disclaimer, a verified contract does not mean that the contract is clean. We recommend that you read the contract yourself to be sure before you store your CFX on one of the pools.
+## The App
 
-## Install and run the project
+
+### Technical stack
+
+
+- ReactJS & NextJS (Static site generator)
+- Typescript
+- TailwindCSS
+
+
+### Features
+The dApp have 4 main features which are (on all 28th blockchain supported by covalent APIs) : 
+
+- Track and check all tokens of an address (Tokens list, Folio history, TreeMap)
+- Track all transactions for an address and get statistics for the address (Total fees, total transactions, total in, total out)
+- A NFT collection explorer (track collections, tokenId, attributes, transactions, ....) 
+- A events explorer (track all events/topics for a given contract) 
+
+
+
+### Portfolio
+
+<img width="1792" alt="folio" src="https://user-images.githubusercontent.com/34569321/175107496-a5dfe410-8b88-4170-9195-90a553a861aa.png">
+
+
+*Covalent APIs used*
+- GET /v1/{chain_id}/{address}/balances_v2/
+- GET /v1/{chain_id}/{address}/portfolio_v2/
+- GET /v1/chains/
+
+### Transactions
+<img width="1792" alt="event" src="https://user-images.githubusercontent.com/34569321/175108227-ac13b988-fdc0-416f-bfbe-99f1d2bc35f4.png">
+
+*Covalent APIs used*
+- GET /v1/{chainId}/{address}/transactions_v2/
+- GET /v1/chains/
+
+### NFT market
+<img width="1792" alt="nft" src="https://user-images.githubusercontent.com/34569321/175108334-6b924871-5918-4163-8eae-7307425b436f.png">
+
+*Covalent APIs used*
+- GET /v1/{chainId}/tokens/{contract}/nft_token_ids/
+- GET /v1/{chainId}/nft_market/
+- GET /v1/pricing/historical_by_addresses_v2/{chainId}/USD/{contract}/
+- GET /V1/{chainId}/tokens/{contract}/nft_metadata/{tokenId}/
+- GET /V1/{chainId}/tokens/{contract}/nft_transactions/{tokenId}
+- GET /v1/chains/
+
+### Events
+<img width="1792" alt="transaction" src="https://user-images.githubusercontent.com/34569321/175108647-ec485f22-759e-47b8-a8e9-0749e42f57e6.png">
+
+*Covalent APIs used*
+- GET /v1/{chainId}/events/topics/{topic}/
+- GET /v1/{chainId}/events/address/{address}/
+- GET /v1/chains/
+
+## Run the project locally
 
 To run the project you'll need NodeJS and yarn installed in your machine.
 
@@ -26,14 +76,6 @@ Install all dependencies
 
     yarn install
 
-To run the report pool feature in local you'll need to create a github api khey with write right on a github project.
-The report form directly create an issue on the repo with the information of the malicious pool.
-_This is not mandatory to run the project_
-Create a **.env** file at the root of the project with
-
-    NEXT_PUBLIC_GITHUB_KEY={githubApiKeyWithWriteRight}
-    NEXT_PUBLIC_GITHUB_OWNER={ownerOfTheRepo}
-    NEXT_PUBLIC_GITHUB_REPO={nameOfTheRepo}
 
 Start the project
 
@@ -44,30 +86,5 @@ Then go to `localhost:3000` to see the app on your navigator
 Build the project for production
 
     yarn build
-
-## Add my pool
-
-Anyone can add this pool, to do so you need to create a new pull request.
-All static pools informations are in the **pools.json** file in.
-
-The file contain a array with all existing pool, to add your pool you'll need 4 informations:
-
-- The name of the pool
-- The adress of the pool
-- The image of the pool (icon display on the table, not mandatory)
-- The link of the pool
-
-Example :
-
-    {
-    "name": "Test Pool",
-    "adress": "cfx:a77Hsb694ch9k2ppym6v68gzvy6yyUEYes3wndm7m",
-    "image": "http://test-pools/favicon.ico",
-    "link": "http://test-pools/"
-    }
-
-To add your pool you simply need to add your pools informations at the end of the file pools.json (in the array). If your pool is trsuted by the conflux team (the team will verify this information) you can add **"trusted": true** on the declaration of the configuration of your node.
-That's it !
-All others informations (APY, STAKER, TVL, ....) are directly fetch from the blockchain !
 
 Don't hesitate to contribute to improve this open source project.

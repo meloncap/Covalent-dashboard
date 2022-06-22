@@ -118,10 +118,12 @@ export default () => {
                   />
                 </div>
               </div>
-              <div className="overflow-x-auto bg-white rounded-xl">
+              <div className="overflow-x-auto text-gray-500 bg-white dark:text-gray-200 dark:bg-gray-700 rounded-xl">
                 <div className="flex items-center w-full gap-4 p-4 border-b border-b-gray-200">
                   <img src="/images/folio.svg" />
-                  <p className="text-lg text-gray-500">Portfolio</p>
+                  <p className="text-lg text-gray-500 dark:text-white">
+                    Portfolio
+                  </p>
                 </div>
                 <table className="min-w-full overflow-x-auto leading-normal rounded-xl">
                   <thead>
@@ -136,7 +138,7 @@ export default () => {
                             index === headers.length - 1
                               ? "rounded-tr-xl xl"
                               : ""
-                          } px-6 py-4 text-left font-normal text-gray-700  bg-white text-xs lg:text-md`}
+                          } px-6 py-4 text-left font-normal text-gray-700 dark:bg-gray-700 bg-white text-xs lg:text-md`}
                         >
                           {hd.name}
                         </th>
@@ -150,7 +152,7 @@ export default () => {
                           key={item.contract_address || ""}
                           className="border-b border-gray-200 rounded-xl"
                         >
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             <img
                               onError={({ currentTarget }) => {
                                 currentTarget.onerror = null; // prevents looping
@@ -164,40 +166,40 @@ export default () => {
                               className="w-10"
                             />
                           </td>
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             {item.contract_ticker_symbol}
                           </td>
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             {item.contract_name}
                           </td>
 
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             {formatBalance(
                               item.balance,
                               item.contract_decimals
                             )}
                           </td>
-                          <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white">
+                          <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white dark:bg-gray-700">
                             {formatNumber(item.quote)}$
                           </td>
                         </tr>
                       );
                     })}
                     {items.length === 0 && !isLoadingBalance && (
-                      <tr className="bg-white border-b border-gray-200 rounded-xl">
+                      <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                         <td
                           colSpan={headers.length}
-                          className="px-8 py-8 text-sm text-center text-gray-400 bg-white"
+                          className="px-8 py-8 text-sm text-center text-gray-400 bg-white dark:text-white dark:bg-gray-700"
                         >
                           No data
                         </td>
                       </tr>
                     )}
                     {isLoadingBalance && (
-                      <tr className="bg-white border-b border-gray-200 rounded-xl">
+                      <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                         <td
                           colSpan={headers.length}
-                          className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 animate-pulse"
+                          className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 dark:text-white animate-pulse"
                         >
                           -
                         </td>
@@ -209,10 +211,10 @@ export default () => {
             </div>
           </div>
           <div className="flex flex-col w-1/2 gap-4">
-            <div className="bg-white rounded-xl">
+            <div className="bg-white dark:bg-gray-700 rounded-xl">
               <div className="flex items-center w-full gap-4 p-4">
                 <img src="/images/chart.svg" />
-                <p className="text-lg text-gray-500">Chart</p>
+                <p className="text-lg text-gray-500 dark:text-white">Chart</p>
               </div>
               <Portfolio
                 isLoading={isLoadingFolio}
@@ -222,10 +224,10 @@ export default () => {
                 height={400}
               />
             </div>
-            <div className="bg-white rounded-xl">
+            <div className="bg-white dark:bg-gray-700 rounded-xl">
               <div className="flex items-center w-full gap-4 p-4">
                 <img src="/images/chart.svg" />
-                <p className="text-lg text-gray-500">TreeMap</p>
+                <p className="text-lg text-gray-500 dark:text-white">TreeMap</p>
               </div>
 
               <PackToken

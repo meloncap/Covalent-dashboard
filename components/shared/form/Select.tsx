@@ -19,8 +19,8 @@ export const Select = ({
   const [isOpen, setIsOpen] = useState(false);
   // Create a ref that we add to the element for which we want to detect outside clicks
   const ref = useRef();
-  const selectedIem = options.find(item => item.value === value);
-  const finalOptions = options.filter(item => item.value !== value);
+  const selectedIem = options.find(item => item?.value === value);
+  const finalOptions = options.filter(item => item?.value !== value);
   useOnClickOutside(ref, () => setIsOpen(false));
   if (isLoading) {
     return (
@@ -52,7 +52,7 @@ export const Select = ({
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
-          className="relative w-full px-2 py-2 text-xs text-left bg-gray-100 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="relative w-full px-6 py-4 text-xs text-left bg-white shadow dark:text-white dark:bg-gray-700 rounded-xl focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           {selectedIem ? (
             <div className="flex items-center justify-between">
@@ -65,9 +65,7 @@ export const Select = ({
                   />
                 )}
 
-                <span className="block ml-3 truncate">
-                  {selectedIem.label}({selectedIem.value})
-                </span>
+                <span className="block ml-3 truncate">{selectedIem.label}</span>
               </span>
               <svg
                 width="20"
@@ -88,7 +86,7 @@ export const Select = ({
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
                 <svg
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-gray-400 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -105,7 +103,7 @@ export const Select = ({
           )}
         </button>
         {isOpen && (
-          <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
+          <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg dark:bg-gray-700">
             <ul
               role="listbox"
               aria-labelledby="listbox-label"
@@ -118,14 +116,14 @@ export const Select = ({
                     <li
                       id="listbox-item-0"
                       role="option"
-                      className="relative text-gray-900 cursor-default select-none hover:bg-indigo-500 hover:text-white pr-9"
+                      className="relative text-gray-900 cursor-default select-none dark:text-white hover:bg-indigo-500 hover:text-white pr-9"
                     >
                       <button
                         onClick={() => {
                           onChange(option.value);
                           setIsOpen(false);
                         }}
-                        className="flex items-center py-2 pl-3"
+                        className="flex items-center w-full py-2 pl-3"
                       >
                         {option.img && (
                           <img

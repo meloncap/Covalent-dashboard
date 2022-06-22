@@ -21,13 +21,17 @@ export const NFTHorizontal = ({ isLoading, collection }: Props) => {
       <a className="relative flex w-full gap-6 p-4 transition bg-white shadow hover:scale-105 hover:shadow-xl rounded-xl dark:bg-gray-700">
         <img src={collection.first_nft_image} className="w-1/4 rounded-xl" />
         <div>
-          <p className="text-lg text-gray-800 text-bold">
+          <p className="text-lg text-gray-800 dark:text-white text-bold">
             {collection.collection_name}
           </p>
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <p className="text-sm text-gray-500">Floor price </p>
-              <p>{collection.floor_price_quote_7d}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-200">
+                Floor price{" "}
+              </p>
+              <p className="dark:text-white">
+                {collection.floor_price_quote_7d}
+              </p>
             </div>
           </div>
         </div>

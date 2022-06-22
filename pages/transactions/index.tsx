@@ -154,12 +154,14 @@ export const IndexPage = () => {
               </div>
             </div>
           </div>
-          <div className="overflow-x-auto bg-white rounded-xl">
+          <div className="overflow-x-auto bg-white dark:bg-gray-700 rounded-xl">
             <div className="flex items-center w-full gap-4 p-4 border-b-2 border-gray-200">
               <img src="/images/transaction.svg" />
-              <p className="text-lg text-gray-500">Transactions</p>
+              <p className="text-lg text-gray-500 dark:text-gray-200">
+                Transactions
+              </p>
             </div>
-            <table className="min-w-full mt-4 overflow-x-auto leading-normal rounded-xl">
+            <table className="min-w-full mt-4 overflow-x-auto leading-normal text-gray-500 dark:text-gray-200 rounded-xl">
               <thead>
                 <tr className="rounded-xl">
                   {headers.map((hd, index) => (
@@ -168,7 +170,7 @@ export const IndexPage = () => {
                       scope="col"
                       className={`${index === 0 ? "rounded-tl-xl xl" : ""} ${
                         index === headers.length - 1 ? "rounded-tr-xl xl" : ""
-                      } px-6 py-4 text-left font-normal text-gray-700  bg-white text-xs lg:text-md`}
+                      } px-6 py-4 text-left font-normal text-gray-700 dark:text-white  bg-white dark:bg-gray-700 text-xs lg:text-md`}
                     >
                       {hd.name}
                     </th>
@@ -180,12 +182,12 @@ export const IndexPage = () => {
                   return (
                     <tr
                       key={item.tx_hash || ""}
-                      className="bg-white border-b border-gray-200 rounded-xl"
+                      className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl"
                     >
-                      <td className="px-5 py-5 text-sm bg-white ">
+                      <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                         {item.tx_hash.substr(0, 10)}...
                       </td>
-                      <td className="px-5 py-5 text-sm bg-white">
+                      <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                         <div className="flex items-center justify-between ">
                           <p>{item.from_address_label || item.from_address}</p>
                           {getIsOut(item, address) ? (
@@ -199,7 +201,7 @@ export const IndexPage = () => {
                           )}
                         </div>
                       </td>
-                      <td className="flex items-center px-5 py-5 text-sm bg-white ">
+                      <td className="flex items-center px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                         <img
                           onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // prevents looping
@@ -216,14 +218,14 @@ export const IndexPage = () => {
 
                         {getTo(item)}
                       </td>
-                      <td className="px-5 py-5 text-sm bg-white ">
+                      <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                         {getEventType(item)}
                       </td>
-                      <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white ">
+                      <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white dark:text-white dark:bg-gray-700 ">
                         {formatBalance(getValue(item), 18)}{" "}
                         {getMappingCurrency(selectedChainId)}
                       </td>
-                      <td className="px-5 py-5 text-sm bg-white">
+                      <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                         {}
                         {moment(item.block_signed_at).fromNow()}
                       </td>
@@ -231,20 +233,20 @@ export const IndexPage = () => {
                   );
                 })}
                 {items?.length === 0 && !isLoading && (
-                  <tr className="bg-white border-b border-gray-200 rounded-xl">
+                  <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                     <td
                       colSpan={headers.length}
-                      className="px-8 py-8 text-sm text-center text-gray-400 bg-white"
+                      className="px-8 py-8 text-sm text-center text-gray-400 bg-white dark:text-gray-200 dark:bg-gray-700"
                     >
                       No data
                     </td>
                   </tr>
                 )}
                 {isLoading && (
-                  <tr className="bg-white border-b border-gray-200 rounded-xl">
+                  <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                     <td
                       colSpan={headers.length}
-                      className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 animate-pulse"
+                      className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 dark:text-gray-200 animate-pulse"
                     >
                       -
                     </td>

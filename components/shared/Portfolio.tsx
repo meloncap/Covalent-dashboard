@@ -61,7 +61,7 @@ export default withTooltip<AreaProps, TooltipData>(
     if (isLoading) {
       return (
         <div
-          className="bg-gray-300 rounded-xl animate-pulse"
+          className="bg-gray-300 dark:bg-gray-700 rounded-xl animate-pulse"
           style={{ width, height }}
         ></div>
       );

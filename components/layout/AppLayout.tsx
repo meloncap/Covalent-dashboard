@@ -14,7 +14,7 @@ const AppLayout = ({ title, desc, children }: Props) => {
     <div className="flex min-h-screen font-sans antialiased text-gray-600 bg-gray-100 dark:bg-gray-900">
       <Meta pageTitle={title} description={desc} />
 
-      <main className="relative w-full h-screen overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-2xl">
+      <main className="relative w-full h-screen overflow-hidden bg-gray-100 dark:bg-gray-900 rounded-2xl">
         <div className="flex items-start justify-between">
           <div className="relative hidden h-screen my-4 ml-4 shadow-lg lg:block w-80">
             <div className="h-full ">

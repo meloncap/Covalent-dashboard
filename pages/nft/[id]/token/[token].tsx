@@ -164,31 +164,31 @@ export const IndexPageNFT = () => {
         {loading && (
           <div
             style={{ height: "600px" }}
-            className="relative block w-full mt-4 mb-4 bg-gray-200 animate-pulse h-88 rounded-xl"
+            className="relative block w-full mt-4 mb-4 bg-gray-200 dark:bg-gray-700 animate-pulse h-88 rounded-xl"
           ></div>
         )}
         {details && (
           <div className="flex flex-col w-full gap-4">
             <div className="flex flex-col w-full gap-4">
               <div className="flex items-start gap-4">
-                <div className="relative flex w-full gap-4 p-4 bg-white shadow rounded-xl dark:bg-gray-700">
+                <div className="relative flex flex-wrap w-full gap-4 p-4 bg-white shadow lg:flex-nowrap lg:flex-initial dark:bg-gray-700 rounded-xl">
                   <img
                     src={details.nft_data[0].external_data.image}
-                    className="w-2/5 rounded-xl"
+                    className="w-full lg:w-2/5 rounded-xl"
                   />
-                  <div className="flex flex-col justify-between w-3/5">
+                  <div className="flex flex-col justify-between w-full lg:w-3/5">
                     <div className="flex flex-col justify-between">
                       <div className="flex items-start justify-between">
                         <div className="flex flex-col">
                           <a
                             target="_blank"
                             href={details.nft_data[0].token_url}
-                            className="text-5xl text-gray-800 text-bold"
+                            className="text-5xl text-gray-800 dark:text-white text-bold"
                           >
                             {details.contract_name}#
                             {details.nft_data[0].token_id}
                           </a>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-500 dark:text-gray-300">
                             Owned by{" "}
                             <span className="text-blue-500">
                               {details.nft_data[0].owner}
@@ -196,25 +196,25 @@ export const IndexPageNFT = () => {
                           </p>
                         </div>
                         <Link href={`/nft/${id}`}>
-                          <a className="flex items-center transition-colors duration-200 cursor-pointer rounded-xl hover:text-gray-800 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
+                          <a className="flex items-center transition-colors duration-200 cursor-pointer rounded-xl hover:text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
                             <img
                               src="/images/right.svg"
                               className="rotate-180"
                             />
-                            <span className="mx-4 text-lg text-gray-500">
+                            <span className="mx-4 text-lg text-gray-500 dark:text-gray-300">
                               Back to collection
                             </span>
                           </a>
                         </Link>
                       </div>
 
-                      <div className="flex items-center mt-4 text-gray-400">
+                      <div className="flex items-center mt-4 text-gray-400 dark:text-gray-300">
                         {details?.nft_data[0]?.external_data?.attributes
                           ?.length > 0 ? (
                           <div className="w-full mb-4">
                             <div className="flex items-center w-full gap-4 mb-4">
                               <img src="/images/transaction.svg" />
-                              <p className="text-lg text-gray-500">
+                              <p className="text-lg text-gray-500 dark:text-gray-300">
                                 Attributes
                               </p>
                             </div>
@@ -223,10 +223,10 @@ export const IndexPageNFT = () => {
                                 attr => {
                                   return (
                                     <div className="relative flex flex-col items-center w-24 h-24 p-1 border-2 border-gray-200 hover:shadow rounded-xl">
-                                      <p className="absolute top-0 text-sm text-gray-400 left-2 ">
+                                      <p className="absolute top-0 text-sm text-gray-400 dark:text-gray-300 left-2 ">
                                         {attr.trait_type}
                                       </p>
-                                      <p className="flex items-center justify-center w-full h-full p-6 text-center text-gray-500 text-md">
+                                      <p className="flex items-center justify-center w-full h-full p-6 text-center text-gray-500 dark:text-gray-300 text-md">
                                         {" "}
                                         {attr.value}
                                       </p>
@@ -240,7 +240,7 @@ export const IndexPageNFT = () => {
                           <div className="w-full mb-4 ">
                             <div className="flex items-center w-full gap-4 mb-4">
                               <img src="/images/transaction.svg" />
-                              <p className="text-lg text-gray-500">
+                              <p className="text-lg text-gray-500 dark:text-gray-300">
                                 Attributes
                               </p>
                             </div>
@@ -251,14 +251,14 @@ export const IndexPageNFT = () => {
                     </div>
 
                     <div className="flex items-center justify-between mt-4">
-                      <div className="flex flex-col">
-                        <p className="text-sm text-gray-500">
+                      <div className="flex flex-col text-gray-500 dark:text-white">
+                        <p className="text-sm text-gray-500 dark:text-gray-300">
                           Contract address
                         </p>
                         <p>{details.contract_address}</p>
                       </div>
-                      <div className="flex flex-col justify-items-end">
-                        <p className="w-full text-sm text-right text-gray-500">
+                      <div className="flex flex-col text-gray-500 justify-items-end dark:text-white">
+                        <p className="w-full text-sm text-right text-gray-500 dark:text-gray-300">
                           Token ID
                         </p>
                         <p>{details.nft_data[0].token_id}</p>
@@ -268,18 +268,20 @@ export const IndexPageNFT = () => {
                 </div>
               </div>
               <div>
-                <div className="flex items-center w-full gap-4 p-4 bg-white rounded-t-xl">
+                <div className="flex items-center w-full gap-4 p-4 bg-white dark:bg-gray-700 rounded-t-xl">
                   <img src="/images/transaction.svg" />
-                  <p className="text-lg text-gray-500">Transaction / Sales</p>
+                  <p className="text-lg text-gray-500 dark:text-gray-300">
+                    Transaction / Sales
+                  </p>
                 </div>
-                <table className="min-w-full overflow-x-auto leading-normal rounded-xl">
+                <table className="min-w-full overflow-x-auto leading-normal text-gray-700 rounded-xl dark:text-white">
                   <thead>
                     <tr className="r">
                       {headers.map((hd, index) => (
                         <th
                           key={hd.name + index}
                           scope="col"
-                          className={`px-6 py-4 text-left font-normal text-gray-700  bg-white text-md`}
+                          className={`px-6 py-4 text-left font-normal text-gray-700 dark:text-gray-200  bg-white dark:bg-gray-700 text-md`}
                         >
                           {hd.name}
                         </th>
@@ -291,12 +293,12 @@ export const IndexPageNFT = () => {
                       return (
                         <tr
                           key={item.tx_hash || ""}
-                          className="bg-white border-b border-gray-200 rounded-xl"
+                          className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl"
                         >
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                             {item.tx_hash.substr(0, 10)}...
                           </td>
-                          <td className="px-5 py-5 text-sm bg-white">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             <div className="flex items-center justify-between ">
                               <p>
                                 {item.from_address_label || item.from_address}
@@ -308,34 +310,34 @@ export const IndexPageNFT = () => {
                             </div>
                           </td>
 
-                          <td className="px-5 py-5 text-sm bg-white ">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                             {item.to_address}
                           </td>
 
-                          <td className="px-5 py-5 text-sm bg-white">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             {formatBalance(item.value_quote)}$
                           </td>
-                          <td className="px-5 py-5 text-sm bg-white">
+                          <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
                             {moment(item.block_signed_at).fromNow()}
                           </td>
                         </tr>
                       );
                     })}
                     {transacList?.length === 0 && !loading && (
-                      <tr className="bg-white border-b border-gray-200 rounded-xl">
+                      <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                         <td
                           colSpan={headers.length}
-                          className="px-8 py-8 text-sm text-center text-gray-400 bg-white"
+                          className="px-8 py-8 text-sm text-center text-gray-400 bg-white dark:bg-gray-700 dark:text-gray-300"
                         >
                           No data
                         </td>
                       </tr>
                     )}
                     {loading && (
-                      <tr className="bg-white border-b border-gray-200 rounded-xl">
+                      <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                         <td
                           colSpan={headers.length}
-                          className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 animate-pulse"
+                          className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 dark:text-gray-300 animate-pulse"
                         >
                           -
                         </td>

@@ -87,12 +87,14 @@ export const IndexPage = () => {
         <div className="flex flex-wrap w-full">
           <div className="flex flex-col w-full lg:w-3/4 lg:pr-4">
             <div className="flex items-center justify-between w-full">
-              <h1 className="my-6 text-3xl font-bold text-gray-800">
+              <h1 className="my-6 text-3xl font-bold text-gray-800 dark:text-white">
                 Trending collections
               </h1>
               <Link href="">
-                <a className="flex items-center transition-colors duration-200 cursor-pointer hover:text-gray-800 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
-                  <span className="mx-4 text-lg text-gray-500">See all</span>
+                <a className="flex items-center transition-colors duration-200 cursor-pointer hover:text-gray-800 dark:text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600">
+                  <span className="mx-4 text-lg text-gray-500 dark:text-white">
+                    See all
+                  </span>
                   <img src="/images/right.svg" />
                 </a>
               </Link>
@@ -117,7 +119,7 @@ export const IndexPage = () => {
           </div>
           <div className="w-full lg:w-1/4">
             <div className="flex items-center justify-between w-full">
-              <h2 className="my-6 text-xl font-bold text-gray-800">
+              <h2 className="my-6 text-xl font-bold text-gray-800 dark:text-white">
                 Top Floor
               </h2>
             </div>
@@ -143,7 +145,7 @@ export const IndexPage = () => {
 
         <div className="flex flex-col w-full overflow-x-auto">
           <div className="flex items-center justify-between w-full">
-            <h1 className="my-6 text-3xl font-bold text-gray-800">
+            <h1 className="my-6 text-3xl font-bold text-gray-800 dark:text-white">
               All collections
             </h1>
           </div>
@@ -156,7 +158,7 @@ export const IndexPage = () => {
                     scope="col"
                     className={`${index === 0 ? "rounded-tl-xl xl" : ""} ${
                       index === headers.length - 1 ? "rounded-tr-xl xl" : ""
-                    } px-6 py-4 text-left text-lg font-normal text-gray-900  bg-white text-md`}
+                    } px-6 py-4 text-left text-lg font-normal text-gray-900 dark:text-white  bg-white dark:bg-gray-700 text-md`}
                   >
                     {hd.name}
                   </th>
@@ -171,9 +173,9 @@ export const IndexPage = () => {
                     onClick={() => {
                       router.push(`/nft/${item.collection_address}`);
                     }}
-                    className="bg-white border-b border-gray-200 rounded-xl hover:bg-gray-100 hover:cursor-pointer"
+                    className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl hover:bg-gray-100 hover:cursor-pointer"
                   >
-                    <td className="px-5 py-5 text-sm bg-white ">
+                    <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700 ">
                       <img
                         onError={({ currentTarget }) => {
                           currentTarget.onerror = null; // prevents looping
@@ -188,35 +190,35 @@ export const IndexPage = () => {
                         className="w-20 h-20 mr-2 rounded-xl"
                       />
                     </td>
-                    <td className="px-5 py-5 text-sm bg-white">
-                      <div className="flex items-center justify-between text-lg text-gray-700 ">
+                    <td className="px-5 py-5 text-sm bg-white dark:bg-gray-700">
+                      <div className="flex items-center justify-between text-lg text-gray-700 dark:text-white ">
                         <p>{item.collection_name}</p>
                       </div>
                     </td>
-                    <td className="px-5 py-5 text-sm bg-white ">
+                    <td className="px-5 py-5 text-sm bg-white dark:text-white dark:bg-gray-700 ">
                       {item.collection_address}
                     </td>
-                    <td className="px-5 py-5 text-sm bg-white ">
+                    <td className="px-5 py-5 text-sm bg-white dark:text-white dark:bg-gray-700 ">
                       {item.volume_quote_24h}
                     </td>
-                    <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white ">
+                    <td className="px-5 py-5 text-sm font-bold text-gray-800 bg-white dark:bg-gray-700 dark:text-white ">
                       {item.floor_price_quote_7d}
                     </td>
                   </tr>
                 );
               })}
               {items?.length === 0 && !isLoading && (
-                <tr className="bg-white border-b border-gray-200 rounded-xl">
+                <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                   <td
                     colSpan={headers.length}
-                    className="px-8 py-8 text-sm text-center text-gray-400 bg-white"
+                    className="px-8 py-8 text-sm text-center text-gray-400 bg-white dark:bg-gray-700"
                   >
                     No data
                   </td>
                 </tr>
               )}
               {isLoading && (
-                <tr className="bg-white border-b border-gray-200 rounded-xl">
+                <tr className="bg-white border-b border-gray-200 dark:bg-gray-700 rounded-xl">
                   <td
                     colSpan={headers.length}
                     className="px-8 py-8 text-sm text-center text-gray-400 bg-gray-200 animate-pulse"

@@ -3,6 +3,9 @@ import { useTheme } from "next-themes";
 import { Select } from "../../shared/form/Select";
 import AppContext from "../../../AppContext";
 import { Button } from "../../shared/form/Button";
+import { sections } from "../navbar/Navbar";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AppHeader = () => {
   const { theme, setTheme } = useTheme();
@@ -13,7 +16,18 @@ const AppHeader = () => {
     setAddress,
     address,
   } = useContext(AppContext);
+  const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
 
+  const isMatch = (path: string) => {
+    if (path === "/") {
+      return router.asPath === path;
+    }
+    return (
+      router.asPath.includes(path) &&
+      (router.asPath.length === path.length || router.asPath !== "/")
+    );
+  };
   const [addressInput, setAddressInput] = useState(address);
 
   const chainsOptions = allChains.map(data => {
@@ -29,9 +43,59 @@ const AppHeader = () => {
   };
   return (
     <header className="z-40 items-center w-full h-16 bg-white shadow lg:ml-2 lg:mr-6 dark:bg-gray-700 rounded-2xl">
+      {isOpen && (
+        <ul className="fixed top-0 bottom-0 left-0 right-0 z-30 p-4 bg-white menu">
+          <button
+            onClick={() => {
+              setOpen(false);
+            }}
+            className="flex p-2 ml-auto text-lg text-right border border-gray-300 rounded-xl justify-items-end"
+          >
+            Close
+          </button>
+          {sections.map(section => {
+            return (
+              <div>
+                <p className="w-full pb-2 mb-4 ml-2 font-normal text-gray-400 border-b-2 border-gray-100 text-md">
+                  {section.title}
+                </p>
+
+                {section.links.map(link => {
+                  return (
+                    <Link
+                      className="relative flex items-center justify-start font-thin text-gray-500"
+                      href={link.link}
+                    >
+                      <a
+                        className={`${
+                          isMatch(link.link)
+                            ? "bg-indigo-100 text-indigo-700 "
+                            : "hover:text-gray-800 dark:text-gray-400 hover:bg-gray-100"
+                        } flex items-center p-3 my-4 rounded-xl transition-colors duration-200 cursor-pointer  dark:hover:text-white dark:hover:bg-gray-600`}
+                      >
+                        <span className="text-left">{link.icon}</span>
+                        <span className="mx-4 text-lg font-normal">
+                          {link.label}
+                        </span>
+                        {isMatch(link.link) && (
+                          <img
+                            src="/images/selected.svg"
+                            className="absolute right-0"
+                          />
+                        )}
+                      </a>
+                    </Link>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </ul>
+      )}
+
       <div className="relative z-20 flex flex-col justify-center h-full mx-auto lg:px-3 flex-center">
         <div className="relative flex items-center w-full pl-1 lg:max-w-68 sm:pr-2 sm:ml-0">
-          <div className="container relative left-0 z-50 flex justify-between w-1/2 h-full lg:w-3/4">
+          <div className="container relative left-0 z-50 flex justify-between w-full h-full lg:w-3/4">
             <form
               className="flex items-center w-3/4 gap-4 ml-4 lg:w-1/2"
               noValidate
@@ -65,7 +129,7 @@ const AppHeader = () => {
                 onChange={e => setAddressInput(e.target.value)}
                 type="text"
                 id="rounded-email"
-                className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border-transparent appearance-none focus:outline-none focus:ring-0 focus:border border-b-gray-200"
+                className="flex-1 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 border-transparent appearance-none dark:text-white dark:bg-gray-700 focus:outline-none focus:ring-0 focus:border border-b-gray-200"
                 placeholder="Search an address"
               />
               {addressInput && (
@@ -103,8 +167,29 @@ const AppHeader = () => {
               )}
             </form>
           </div>
+          <div className="relative flex items-center justify-end w-1/4 lg:hidden sm:mr-0 sm:right-auto">
+            <div className="z-10 flex flex-row-reverse ml-4 mr-4 text-gray-800">
+              <button
+                className="hamburger"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  className="w-8 h-8"
+                  viewBox="0 0 1792 1792"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
 
-          <div className="relative flex items-center justify-end w-1/2 lg:w-1/4 sm:mr-0 sm:right-auto">
+          <div className="relative items-center justify-end hidden w-1/2 lg:flex lg:w-1/4 sm:mr-0 sm:right-auto">
             <Select
               defaultLabel="Select a chain"
               value={selectedChainId}

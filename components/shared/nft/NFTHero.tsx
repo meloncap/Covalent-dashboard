@@ -23,7 +23,7 @@ export const NFTHero = ({ isLoading, collection }: Props) => {
   return (
     <Link href={`/nft/${collection.collection_address}`}>
       <a className="relative flex flex-col justify-between w-full gap-6 p-4 transition bg-white shadow hover:scale-105 hover:shadow-xl rounded-xl dark:bg-gray-700">
-        <img src={collection.first_nft_image} className="h-3/4 rounded-xl" />
+        <img src={collection.first_nft_image} className="w-full rounded-xl" />
         <div>
           <p className="text-lg text-gray-800 dark:text-white text-bold">
             {collection.collection_name}

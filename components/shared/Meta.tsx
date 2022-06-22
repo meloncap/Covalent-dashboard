@@ -43,17 +43,21 @@ const Meta = ({ pageTitle, description }: Props) => {
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff"></meta>
 
-      <meta name="image" property="og:image" content={`${url}/folio.png`} />
+      <meta
+        name="image"
+        property="og:image"
+        content={`${url}/images/folio.png`}
+      />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta property="og:title" content={`${pageTitle}`} />
       <meta property="og:url" content={`${url}${path}`} />
       <link rel="canonical" href={`${url}${path}`} />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta name="twitter:creator" content="@nickbilton" />
+      <meta name="twitter:creator" content="@Charlie85270" />
       <meta
         property="og:image"
-        content="https://vermillion-madeleine-92b1ea.netlify.app/folio.png"
+        content="https://vermillion-madeleine-92b1ea.netlify.app/images/folio.png"
       />
       <meta name="twitter:site" content="@Charlie85270" />
       <meta name="twitter:creator" content="@Charlie85270" />
@@ -64,7 +68,7 @@ const Meta = ({ pageTitle, description }: Props) => {
       />
       <meta
         name="twitter:image"
-        content="https://vermillion-madeleine-92b1ea.netlify.app/folio.png"
+        content="https://vermillion-madeleine-92b1ea.netlify.app/images/folio.png"
       />
     </Head>
   );

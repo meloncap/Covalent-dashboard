@@ -10,7 +10,7 @@ interface Props {
 const Meta = ({ pageTitle, description }: Props) => {
   const router = useRouter();
 
-  const url = "https://vermillion-madeleine-92b1ea.netlify.app/";
+  const url = "https://covalent-board.netlify.app";
   const path = router.asPath;
 
   return (
@@ -57,18 +57,18 @@ const Meta = ({ pageTitle, description }: Props) => {
       <meta name="twitter:creator" content="@Charlie85270" />
       <meta
         property="og:image"
-        content="https://vermillion-madeleine-92b1ea.netlify.app/images/folio.png"
+        content="https://covalent-board.netlify.app/images/folio.png"
       />
       <meta name="twitter:site" content="@Charlie85270" />
       <meta name="twitter:creator" content="@Charlie85270" />
       <meta name="twitter:title" content="Covalent crypto Dashboard" />
       <meta
         name="twitter:description"
-        content="Covalent oard / Dashboard built with covalent API."
+        content="Covalent board / Dashboard built with covalent API."
       />
       <meta
         name="twitter:image"
-        content="https://vermillion-madeleine-92b1ea.netlify.app/images/folio.png"
+        content="https://covalent-board.netlify.app/images/folio.png"
       />
     </Head>
   );

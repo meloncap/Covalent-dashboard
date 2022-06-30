@@ -3,6 +3,10 @@
 <img width="1791" alt="image" src="https://user-images.githubusercontent.com/34569321/175106028-c8d11198-2725-441b-b27d-0300555a1269.png">
 
 
+Demo live : https://covalent-board.netlify.app/
+
+Demo vidéo : https://www.youtube.com/watch?v=bfs6MskSmUo
+
 I created this app for the 14th Hackthon of Gitcoin. Hackathon: Grants Round 14 Hackathon
 ## GR14: Web3 Application General Purpose Bounty (Covalent)
 Challenge Description

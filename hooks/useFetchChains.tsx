@@ -12,7 +12,7 @@ export const useFetchChains = () => {
     reqChains()
       .then(response => {
         setAllChains(response?.data?.items || []);
-        setSelectedChainId("1");
+        setSelectedChainId("58");
       })
       .finally(() => {
         setIsLoadingChains(false);
